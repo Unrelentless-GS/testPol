@@ -146,7 +146,7 @@ class SomeEntityDataSource: DataSourceable {
 
     var filteredEntities: [MPOLKitEntity]? {
         get {
-            return internalEntities.filter{$0.username == "Bret"}
+            return internalEntities.filter{$0.alpha3_code == "AFG"}
         }
         set{}
     }

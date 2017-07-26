@@ -12,25 +12,14 @@ import Alamofire
 import Unbox
 
 public struct SearchResult<T>: Unboxable {
-
-    public let range: CountableRange<Int>
     public let results: [T]
 
     public init(unboxer: Unboxer) throws {
-
-        let start: Int = try unboxer.unbox(key: CodingKeys.start.rawValue)
-        let end: Int = try unboxer.unbox(key: CodingKeys.end.rawValue)
-
-        range = start..<end
-        results = try unboxer.unbox(key: CodingKeys.results.rawValue)
-
+        results = try unboxer.unbox(keyPath: CodingKeys.results.rawValue)
     }
 
     private enum CodingKeys: String {
-        case start = "firstItem"
-        case end = "lastItem"
-        case count = "searchResultsTotal"
-        case results = "searchResults"
+        case results = "RestResponse.result"
     }
 
 }
@@ -38,7 +27,9 @@ public struct SearchResult<T>: Unboxable {
 class APIManager: NSObject {
 
     open func searchEntityOperation<P: TestEntity>(from source: EntitySource, with parameters: Parameterisable, completion: ((DataResponse<SearchResult<P>>) -> Void)? = nil) -> UnboxingGroupOperation<SearchResult<P>> {
-        let request = URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/users")!)
+
+        let request = URLRequest(url: URL(string: "http://services.groupkt.com/country/get/all")!)
+//        let request = URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/users")!)
         return unboxOperation(with: request, completion: completion)
     }
 
