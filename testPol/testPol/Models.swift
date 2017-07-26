@@ -199,14 +199,19 @@ class SomeEntityDataSource: DataSourceable {
     }
 
     func decorate(cell: EntityCollectionViewCell, at indexPath: IndexPath, style: EntityCollectionViewCell.Style) {
-
+        cell.titleLabel.text = internalEntities[indexPath.item].name
+        cell.subtitleLabel.text = internalEntities[indexPath.item].alpha3_code
     }
 
     func decorateAlert(cell: EntityCollectionViewCell, at indexPath: IndexPath, style: EntityCollectionViewCell.Style) {
-        
+        cell.titleLabel.text = internalEntities[indexPath.item].name
+        cell.subtitleLabel.text = internalEntities[indexPath.item].alpha3_code
+        cell.alertColor = .red
+        cell.badgeCount = 100
     }
     
     func decorateList(cell: EntityListCollectionViewCell, at indexPath: IndexPath) {
-        
+        cell.titleLabel.text = internalEntities[indexPath.item].name
+        cell.subtitleLabel.text = internalEntities[indexPath.item].alpha2_code
     }
 }

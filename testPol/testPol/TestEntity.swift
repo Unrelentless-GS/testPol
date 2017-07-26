@@ -11,12 +11,7 @@ import MPOLKit
 import Unbox
 
 
-class TestEntity: MPOLKitEntity, Serialisable {
-
-
-//    "name" : "Afghanistan",
-//    "alpha2_code" : "AF",
-//    "alpha3_code" : "AFG"
+class TestEntity: MPOLKitEntity, Unboxable {
 
     var name: String?
     var alpha2_code: String?
@@ -28,15 +23,4 @@ class TestEntity: MPOLKitEntity, Serialisable {
         alpha3_code = unboxer.unbox(key: "alpha3_code")
         super.init()
     }
-
-    func encode(with aCoder: NSCoder) {
-
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-
-    }
-
-    static var supportsSecureCoding: Bool = true
-
 }
