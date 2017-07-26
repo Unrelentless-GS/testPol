@@ -1,0 +1,16 @@
+platform :ios, '10.0'
+use_frameworks!
+
+workspace 'testPol'
+project 'testPol.xcodeproj'
+
+def mpol_kit
+    pod 'MPOLKit', :git=> 'https://github.com/Gridstone/mPolKit-iOS', :branch => 'vmware'
+    #pod 'MPOLKit', :path => '../mPolKit-iOS'
+    #pod 'APESuperHUD', '1.1.2'
+end
+
+target 'testPol' do
+    project 'testPol.xcodeproj'
+    mpol_kit
+end
