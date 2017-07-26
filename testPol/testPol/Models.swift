@@ -86,7 +86,7 @@ class TestFilter: Filtering {
         case 0:
             return filter1
         case 1:
-            return String(describing: filter2)
+            return filter2
         default:
             return nil
         }
@@ -168,7 +168,7 @@ class SomeEntityDataSource: DataSourceable {
             let picker = PickerTableViewController(style: .plain, items: values)
             picker.selectionUpdateHandler = { [weak self] (_, selectedIndexes) in
                 guard let `self` = self, let selectedTypeIndex = selectedIndexes.first else { return }
-                filter.filter1 = values[selectedTypeIndex].title
+                filter.filter1 = values[selectedTypeIndex].title!
                 self.updatingDelegate?.searchDataSource(self, didUpdateFilterAt: index)
             }
             viewController = picker
@@ -177,7 +177,7 @@ class SomeEntityDataSource: DataSourceable {
             let picker = PickerTableViewController(style: .plain, items: values)
             picker.selectionUpdateHandler = { [weak self] (_, selectedIndexes) in
                 guard let `self` = self, let selectedTypeIndex = selectedIndexes.first else { return }
-                filter.filter2 = values[selectedTypeIndex].subtitle
+                filter.filter2 = values[selectedTypeIndex].subtitle!
                 self.updatingDelegate?.searchDataSource(self, didUpdateFilterAt: index)
             }
             viewController = picker
